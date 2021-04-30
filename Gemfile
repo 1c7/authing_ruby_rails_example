@@ -3,7 +3,11 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.3'
 
-gem 'authing_ruby'
+# 指向本地
+gem 'authing_ruby', :path => '/Users/remote_edit/Downloads/authing-ruby-sdk-community'
+# gem 'authing_ruby', '~> 1.0.5'
+
+gem 'dotenv'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.3', '>= 6.1.3.1'
