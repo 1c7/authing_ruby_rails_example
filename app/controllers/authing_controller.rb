@@ -32,10 +32,18 @@ class AuthingController < ApplicationController
 
   # 托管登录页认证
   # https://docs.authing.cn/v2/guides/authentication/#%E6%89%98%E7%AE%A1%E7%99%BB%E5%BD%95%E9%A1%B5%E8%AE%A4%E8%AF%81
+  # http://localhost:3000/authing/method1
   def method1
-    # 认证地址
-    appHost = "https://rails-demo.authing.cn/"
-    redirect_to appHost
+    # 如果没登录
+    if session[:user_id] == nil
+      # 认证地址
+      appHost = "https://rails-demo.authing.cn/"
+      redirect_to appHost
+      return
+    end
+
+    user = User.find(session[:user_id])
+    render json: user
   end
 
   # 回调地址
@@ -105,6 +113,10 @@ class AuthingController < ApplicationController
     # 根据 Authiing 用户 ID 创建用户纪录
     user_id = userInfoJSON["sub"]
     user = User.find_or_create_by(authing_user_id: user_id)
+    user.authing_id_token = res[:id_token]
+    user.authing_access_token = res[:access_token]
+    user.save
+
     session[:user_id] = user.id # 用数据库 id 做标识
     render json: user
   end
