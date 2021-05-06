@@ -69,39 +69,53 @@ class AuthingController < ApplicationController
 
     # 演示拿 access_token
     access_token = res[:access_token]
+    id_token = res[:id_token]
 
     # 这种叫授权码模式
     # 文档请看 https://docs.authing.cn/v2/guides/federation/oidc.html#%E6%8E%88%E6%9D%83%E7%A0%81%E6%A8%A1%E5%BC%8F
 
     # 用 access token 换取用户信息
     userInfo = authenticationClient.getUserInfoByAccessToken(access_token)
-    render json: userInfo
+    userInfoJSON = JSON.parse(userInfo)
+    # render json: userInfoJSON["sub"]
+    # return
     # 返回例子: 
-    userInfoExample = {
-      "sub":"608b9b52414bd3b71fad04ef",
-      "email":"1@qq.com",
-      "email_verified":false,
-      "birthdate":null,
-      "family_name":null,
-      "gender":"U",
-      "given_name":null,
-      "locale":null,
-      "middle_name":null,
-      "name":null,
-      "nickname":null,
-      "picture":"https://files.authing.co/authing-console/default-user-avatar.png",
-      "preferred_username":null,
-      "profile":null,
-      "updated_at":"2021-04-30T05:53:26.782Z",
-      "website":null,
-      "zoneinfo":null,
-      "phone_number":null,
-      "phone_number_verified":false
-    }
+    # userInfoExample = {
+    #   "sub":"608b9b52414bd3b71fad04ef",
+    #   "email":"1@qq.com",
+    #   "email_verified":false,
+    #   "birthdate":null,
+    #   "family_name":null,
+    #   "gender":"U",
+    #   "given_name":null,
+    #   "locale":null,
+    #   "middle_name":null,
+    #   "name":null,
+    #   "nickname":null,
+    #   "picture":"https://files.authing.co/authing-console/default-user-avatar.png",
+    #   "preferred_username":null,
+    #   "profile":null,
+    #   "updated_at":"2021-04-30T05:53:26.782Z",
+    #   "website":null,
+    #   "zoneinfo":null,
+    #   "phone_number":null,
+    #   "phone_number_verified":false
+    # }
+
+    # 根据 Authiing 用户 ID 创建用户纪录
+    user_id = userInfoJSON["sub"]
+    user = User.find_or_create_by(authing_user_id: user_id)
+    session[:user_id] = user.id # 用数据库 id 做标识
+    render json: user
   end
 
-  # 演示验证 token, 从 token 中获取信息
+  # 验证 token
   def verify_token
+  end
+
+  # 已登录的用户，获取自己的用户信息
+  def user_info
+
   end
 
 end
