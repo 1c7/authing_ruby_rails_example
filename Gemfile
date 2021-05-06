@@ -7,7 +7,8 @@ ruby '2.6.3'
 gem 'authing_ruby', :path => '/Users/remote_edit/Downloads/authing-ruby-sdk-community'
 # gem 'authing_ruby', '~> 1.0.5'
 
-gem 'dotenv'
+# gem 'dotenv'
+gem 'dotenv-rails', groups: [:development, :test]
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.3', '>= 6.1.3.1'
