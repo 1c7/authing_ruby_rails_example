@@ -1,7 +1,7 @@
 PATH
   remote: /Users/remote_edit/Downloads/authing-ruby-sdk-community
   specs:
-    authing_ruby (1.0.6)
+    authing_ruby (1.0.7)
       faraday (~> 1.4, >= 1.4.1)
       http (~> 4.4, >= 4.4.1)
       jwt (~> 2.2, >= 2.2.3)
@@ -99,6 +99,7 @@ GEM
       dotenv (= 2.7.6)
       railties (>= 3.2)
     erubi (1.10.0)
+    erubis (2.7.0)
     faraday (1.4.1)
       faraday-excon (~> 1.1)
       faraday-net_http (~> 1.0)
@@ -114,6 +115,20 @@ GEM
       rake
     globalid (0.4.2)
       activesupport (>= 4.2.0)
+    haml (5.2.1)
+      temple (>= 0.8.0)
+      tilt
+    haml-rails (2.0.1)
+      actionpack (>= 5.1)
+      activesupport (>= 5.1)
+      haml (>= 4.0.6, < 6.0)
+      html2haml (>= 1.0.1)
+      railties (>= 5.1)
+    html2haml (2.2.0)
+      erubis (~> 2.7.0)
+      haml (>= 4.0, < 6)
+      nokogiri (>= 1.6.0)
+      ruby_parser (~> 3.5)
     http (4.4.1)
       addressable (~> 2.3)
       http-cookie (~> 1.0)
@@ -196,6 +211,8 @@ GEM
       ffi (~> 1.0)
     regexp_parser (2.1.1)
     ruby2_keywords (0.0.4)
+    ruby_parser (3.15.1)
+      sexp_processor (~> 4.9)
     rubyzip (2.3.0)
     sass-rails (6.0.0)
       sassc-rails (~> 2.1, >= 2.1.1)
@@ -211,6 +228,7 @@ GEM
       childprocess (>= 0.5, < 4.0)
       rubyzip (>= 1.2.2)
     semantic_range (3.0.0)
+    sexp_processor (4.15.2)
     spring (2.1.1)
     sprockets (4.0.2)
       concurrent-ruby (~> 1.0)
@@ -220,6 +238,7 @@ GEM
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
     sqlite3 (1.4.2)
+    temple (0.8.2)
     thor (1.1.0)
     tilt (2.0.10)
     turbolinks (5.2.1)
@@ -262,6 +281,7 @@ DEPENDENCIES
   byebug
   capybara (>= 3.26)
   dotenv-rails
+  haml-rails (~> 2.0)
   jbuilder (~> 2.7)
   listen (~> 3.3)
   puma (~> 5.0)

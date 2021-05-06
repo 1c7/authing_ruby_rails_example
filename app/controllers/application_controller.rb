@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+	helper_method :user_signed_in?, :current_user # 这样 view 里面才可以调用这2个方法
 
 	# 判断是否登录了, 方法名模仿的是 devise
 	def user_signed_in?

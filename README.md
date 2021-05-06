@@ -2,15 +2,15 @@
 本项目演示如何使用 Ruby on Rails + Authing 实现用户身份管理（注册登录）    
 可以替换掉自制注册登录，以及 `devise`  
 
-## TODO
-[x] 保存登录态到 session 里
-[x] 访问同一个登录页，检测到登录状态，然后不会再要求跳转
-* 更新用户信息 
-	[x] 方法1：用 Authing 提供的 `/u`: https://rails-demo.authing.cn/u?app_id=60800b9151d040af9016d60b
-	[ ] 方法2：用 Authing SDK 在后端进行更新（至于前端页面就自己去实现）
-[ ] 获取用户信息
-[ ] 实现 logout 功能
-好像没啥了。 
+## TODO  
+- [x] 保存登录态到 session 里
+- [x] 访问同一个登录页，检测到登录状态，然后不会再要求跳转
+- [x] 更新用户信息 
+	- [x] 方法1：用 Authing 提供的 `/u`: https://rails-demo.authing.cn/u?app_id=60800b9151d040af9016d60b
+	- [x] 方法2：用 Authing SDK 在后端进行更新（至于前端页面就自己去实现）
+- [x] 获取用户信息
+- [x] 实现 logout 功能
+
 
 ## 当前进展
 制作中

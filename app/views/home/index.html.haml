@@ -1,0 +1,9 @@
+
+- if user_signed_in?
+	= "您已成功登录"
+	%div
+		= current_user.inspect
+	= link_to "退出登录", user_logout_path
+- else
+	= "尚未登录"
+	= link_to "登录", user_path

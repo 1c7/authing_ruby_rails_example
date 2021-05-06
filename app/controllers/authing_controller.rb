@@ -118,7 +118,11 @@ class AuthingController < ApplicationController
     user.save
 
     session[:user_id] = user.id # 用数据库 id 做标识
-    render json: user
+
+    # 输出用户信息
+    # render json: user
+
+    redirect_to root_path
   end
 
   # 验证 token
