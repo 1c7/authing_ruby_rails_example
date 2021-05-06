@@ -57,19 +57,24 @@ class AuthingController < ApplicationController
     authenticationClient = AuthingRuby::AuthenticationClient.new(options)
 
     # 用 code 换取 token
-    # res = authenticationClient.getAccessTokenByCode(code);
-
+    # res = authenticationClient.getAccessTokenByCode(code)
     # 返回示例
-    res = {"status":200,"body":"{\"access_token\":\"eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImZ6S0U4TUlidkVkdl9Mb3N5a1dHTjdNTmpqbjlQMldvVmxtN0pIcFVZUFUifQ.eyJqdGkiOiJsMllkZ0RTZmhkcFhfM3ZGc2dHdlEiLCJzdWIiOiI2MDhiOWI1MjQxNGJkM2I3MWZhZDA0ZWYiLCJpYXQiOjE2MjAyODMxOTMsImV4cCI6MTYyMTQ5Mjc5Mywic2NvcGUiOiJvcGVuaWQgcHJvZmlsZSBwaG9uZSBlbWFpbCIsImlzcyI6Imh0dHBzOi8vcmFpbHMtZGVtby5hdXRoaW5nLmNuL29pZGMiLCJhdWQiOiI2MDgwMGI5MTUxZDA0MGFmOTAxNmQ2MGIifQ.N0s3N9n6RRbu5C1S8VOsIMkFLzv4ph6GOqPsWCdNOxa-Rj-wS3mRteoRs79lGaBtdHuu8pkXNXWARHx8hn6FJVfVZU-ydDZbHu3pY3SBmZtpkiMiFkCdujVLXaMrs5Q_ojMOto9WsABZva-z86fDFwUxhHOZzwMG6eIISAQFjjg2DouOCUxb5f4WuQwTw182EvUtsSrATlMHpYnwnv5TCIcmsxV-dEWC73fNNeQ19dr5JlwvGK2CZRXax5I9WsKlFMBF2c2e1RcSNClfKIL36TwOiHUfl3f74EPMHnBB1ncnbew7ygLGImlXeL27xfLdveXutNioxIKJLY3-y7UdNA\",\"expires_in\":1209600,\"id_token\":\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MDhiOWI1MjQxNGJkM2I3MWZhZDA0ZWYiLCJiaXJ0aGRhdGUiOm51bGwsImZhbWlseV9uYW1lIjpudWxsLCJnZW5kZXIiOiJVIiwiZ2l2ZW5fbmFtZSI6bnVsbCwibG9jYWxlIjpudWxsLCJtaWRkbGVfbmFtZSI6bnVsbCwibmFtZSI6bnVsbCwibmlja25hbWUiOm51bGwsInBpY3R1cmUiOiJodHRwczovL2ZpbGVzLmF1dGhpbmcuY28vYXV0aGluZy1jb25zb2xlL2RlZmF1bHQtdXNlci1hdmF0YXIucG5nIiwicHJlZmVycmVkX3VzZXJuYW1lIjpudWxsLCJwcm9maWxlIjpudWxsLCJ1cGRhdGVkX2F0IjoiMjAyMS0wNC0zMFQwNTo1MzoyNi43ODJaIiwid2Vic2l0ZSI6bnVsbCwiem9uZWluZm8iOm51bGwsInBob25lX251bWJlciI6bnVsbCwicGhvbmVfbnVtYmVyX3ZlcmlmaWVkIjpmYWxzZSwiZW1haWwiOiIxQHFxLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwibm9uY2UiOiJJS1FrMF9qWXg4IiwiYXRfaGFzaCI6Ik5sUC1WeHpkRHlmb2hnOUFOR0FBemciLCJhdWQiOiI2MDgwMGI5MTUxZDA0MGFmOTAxNmQ2MGIiLCJleHAiOjE2MjE0OTI3OTMsImlhdCI6MTYyMDI4MzE5MywiaXNzIjoiaHR0cHM6Ly9yYWlscy1kZW1vLmF1dGhpbmcuY24vb2lkYyJ9._7nObGR0XMdCz-uWLiRvHP6OvbaPqwgP50DwaR_ViMo\",\"scope\":\"openid profile phone email\",\"token_type\":\"Bearer\"}","response_headers":{"server":"nginx/1.19.0","date":"Thu, 06 May 2021 06:39:53 GMT","content-type":"application/json; charset=utf-8","transfer-encoding":"chunked","connection":"keep-alive","vary":"Accept-Encoding, Origin","x-powered-by":"Express","pragma":"no-cache","cache-control":"no-cache, no-store","set-cookie":"authing_session=s%3AJXoCkNY7EVApWKnAEKQaZ_c6dXMg95Nb.E6%2FF24JFQ9YoykIVasa07p4sqeg3UdHmcrsP7idOtB4; Path=/; Expires=Thu, 20 May 2021 06:39:53 GMT; HttpOnly; Secure; SameSite=None","strict-transport-security":"max-age=15724800; includeSubDomains"}}
-    # 演示怎么拿到 access_token
-    body_string = res[:body]
-    body = JSON.parse(body_string)
-    access_token = body["access_token"]
-    expires_in = body["expires_in"]
-    id_token = body["id_token"]
-    scope = body["scope"]
-    token_type = body["token_type"]
-    render json: access_token
+    res = {"access_token":"eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImZ6S0U4TUlidkVkdl9Mb3N5a1dHTjdNTmpqbjlQMldvVmxtN0pIcFVZUFUifQ.eyJqdGkiOiJnYmVIcDYtM1FBYmIzNWpmNDlTWVMiLCJzdWIiOiI2MDhiOWI1MjQxNGJkM2I3MWZhZDA0ZWYiLCJpYXQiOjE2MjAyODY2NDAsImV4cCI6MTYyMTQ5NjI0MCwic2NvcGUiOiJvcGVuaWQgZW1haWwgcHJvZmlsZSBwaG9uZSIsImlzcyI6Imh0dHBzOi8vcmFpbHMtZGVtby5hdXRoaW5nLmNuL29pZGMiLCJhdWQiOiI2MDgwMGI5MTUxZDA0MGFmOTAxNmQ2MGIifQ.qxPlpewKtxeTDZ13Z0FUFpfJ8JrX3CKXnYj9gTaOt9IZmzxpkJp4GyVbfdz6YVvhcgPb5Hr76w6Cq-PMWAQ-_ajy9CQUFUvvuQVvDMmoW0HqwYTdpQKg8vAeU8NSfivdMuJqyDt5dytGTU0OxmN6Q1BHXx3wS0DlVVqyB1PDTYJjXW2LDzMRiLWS8QDXWMiEZ3cMSZzzAyDh98adi_Vd0g5hLbKOlICi9aQ-5Q9ze0GNO-p50eoy9cQzS0EuYNJ7PqGoGgfkUgxKwbKlbYYqCVbGs1Gc_D-85WA49uXfq4KEM3aJiwpvcMhHLq3vY_TU3ENoobYUTtd-N3GfnQGZdw","expires_in":1209600,"id_token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MDhiOWI1MjQxNGJkM2I3MWZhZDA0ZWYiLCJlbWFpbCI6IjFAcXEuY29tIiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJiaXJ0aGRhdGUiOm51bGwsImZhbWlseV9uYW1lIjpudWxsLCJnZW5kZXIiOiJVIiwiZ2l2ZW5fbmFtZSI6bnVsbCwibG9jYWxlIjpudWxsLCJtaWRkbGVfbmFtZSI6bnVsbCwibmFtZSI6bnVsbCwibmlja25hbWUiOm51bGwsInBpY3R1cmUiOiJodHRwczovL2ZpbGVzLmF1dGhpbmcuY28vYXV0aGluZy1jb25zb2xlL2RlZmF1bHQtdXNlci1hdmF0YXIucG5nIiwicHJlZmVycmVkX3VzZXJuYW1lIjpudWxsLCJwcm9maWxlIjpudWxsLCJ1cGRhdGVkX2F0IjoiMjAyMS0wNC0zMFQwNTo1MzoyNi43ODJaIiwid2Vic2l0ZSI6bnVsbCwiem9uZWluZm8iOm51bGwsInBob25lX251bWJlciI6bnVsbCwicGhvbmVfbnVtYmVyX3ZlcmlmaWVkIjpmYWxzZSwibm9uY2UiOiJpcTl4eHZmSVVpIiwiYXRfaGFzaCI6IjRRdjJZUjVScUE2UDNjcGJ4VDV0TGciLCJhdWQiOiI2MDgwMGI5MTUxZDA0MGFmOTAxNmQ2MGIiLCJleHAiOjE2MjE0OTYyNDEsImlhdCI6MTYyMDI4NjY0MSwiaXNzIjoiaHR0cHM6Ly9yYWlscy1kZW1vLmF1dGhpbmcuY24vb2lkYyJ9.WmG8z6TaQou23Czc69sldtAHg1AubgclFrrnz0fARP8","scope":"openid email profile phone","token_type":"Bearer"}
+
+    # 演示拿 access_token
+    access_token = res[:access_token]
+
+    # 这种叫授权码模式
+    # 文档请看 https://docs.authing.cn/v2/guides/federation/oidc.html#%E6%8E%88%E6%9D%83%E7%A0%81%E6%A8%A1%E5%BC%8F
+
+    # 用 access token 换取用户信息
+    userInfo = authenticationClient.getUserInfoByAccessToken(access_token)
+    render json: userInfo
+    userInfoExample =  {"sub":"608b9b52414bd3b71fad04ef","email":"1@qq.com","email_verified":false,"birthdate":null,"family_name":null,"gender":"U","given_name":null,"locale":null,"middle_name":null,"name":null,"nickname":null,"picture":"https://files.authing.co/authing-console/default-user-avatar.png","preferred_username":null,"profile":null,"updated_at":"2021-04-30T05:53:26.782Z","website":null,"zoneinfo":null,"phone_number":null,"phone_number_verified":false}
+  end
+
+  # 演示验证 token, 从 token 中获取信息
+  def verify_token
   end
 
 end
