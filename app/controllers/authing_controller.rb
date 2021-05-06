@@ -59,7 +59,13 @@ class AuthingController < ApplicationController
     # 用 code 换取 token
     # res = authenticationClient.getAccessTokenByCode(code)
     # 返回示例
-    res = {"access_token":"eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImZ6S0U4TUlidkVkdl9Mb3N5a1dHTjdNTmpqbjlQMldvVmxtN0pIcFVZUFUifQ.eyJqdGkiOiJnYmVIcDYtM1FBYmIzNWpmNDlTWVMiLCJzdWIiOiI2MDhiOWI1MjQxNGJkM2I3MWZhZDA0ZWYiLCJpYXQiOjE2MjAyODY2NDAsImV4cCI6MTYyMTQ5NjI0MCwic2NvcGUiOiJvcGVuaWQgZW1haWwgcHJvZmlsZSBwaG9uZSIsImlzcyI6Imh0dHBzOi8vcmFpbHMtZGVtby5hdXRoaW5nLmNuL29pZGMiLCJhdWQiOiI2MDgwMGI5MTUxZDA0MGFmOTAxNmQ2MGIifQ.qxPlpewKtxeTDZ13Z0FUFpfJ8JrX3CKXnYj9gTaOt9IZmzxpkJp4GyVbfdz6YVvhcgPb5Hr76w6Cq-PMWAQ-_ajy9CQUFUvvuQVvDMmoW0HqwYTdpQKg8vAeU8NSfivdMuJqyDt5dytGTU0OxmN6Q1BHXx3wS0DlVVqyB1PDTYJjXW2LDzMRiLWS8QDXWMiEZ3cMSZzzAyDh98adi_Vd0g5hLbKOlICi9aQ-5Q9ze0GNO-p50eoy9cQzS0EuYNJ7PqGoGgfkUgxKwbKlbYYqCVbGs1Gc_D-85WA49uXfq4KEM3aJiwpvcMhHLq3vY_TU3ENoobYUTtd-N3GfnQGZdw","expires_in":1209600,"id_token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MDhiOWI1MjQxNGJkM2I3MWZhZDA0ZWYiLCJlbWFpbCI6IjFAcXEuY29tIiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJiaXJ0aGRhdGUiOm51bGwsImZhbWlseV9uYW1lIjpudWxsLCJnZW5kZXIiOiJVIiwiZ2l2ZW5fbmFtZSI6bnVsbCwibG9jYWxlIjpudWxsLCJtaWRkbGVfbmFtZSI6bnVsbCwibmFtZSI6bnVsbCwibmlja25hbWUiOm51bGwsInBpY3R1cmUiOiJodHRwczovL2ZpbGVzLmF1dGhpbmcuY28vYXV0aGluZy1jb25zb2xlL2RlZmF1bHQtdXNlci1hdmF0YXIucG5nIiwicHJlZmVycmVkX3VzZXJuYW1lIjpudWxsLCJwcm9maWxlIjpudWxsLCJ1cGRhdGVkX2F0IjoiMjAyMS0wNC0zMFQwNTo1MzoyNi43ODJaIiwid2Vic2l0ZSI6bnVsbCwiem9uZWluZm8iOm51bGwsInBob25lX251bWJlciI6bnVsbCwicGhvbmVfbnVtYmVyX3ZlcmlmaWVkIjpmYWxzZSwibm9uY2UiOiJpcTl4eHZmSVVpIiwiYXRfaGFzaCI6IjRRdjJZUjVScUE2UDNjcGJ4VDV0TGciLCJhdWQiOiI2MDgwMGI5MTUxZDA0MGFmOTAxNmQ2MGIiLCJleHAiOjE2MjE0OTYyNDEsImlhdCI6MTYyMDI4NjY0MSwiaXNzIjoiaHR0cHM6Ly9yYWlscy1kZW1vLmF1dGhpbmcuY24vb2lkYyJ9.WmG8z6TaQou23Czc69sldtAHg1AubgclFrrnz0fARP8","scope":"openid email profile phone","token_type":"Bearer"}
+    res = {
+      "access_token":"eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImZ6S0U4TUlidkVkdl9Mb3N5a1dHTjdNTmpqbjlQMldvVmxtN0pIcFVZUFUifQ.eyJqdGkiOiJnYmVIcDYtM1FBYmIzNWpmNDlTWVMiLCJzdWIiOiI2MDhiOWI1MjQxNGJkM2I3MWZhZDA0ZWYiLCJpYXQiOjE2MjAyODY2NDAsImV4cCI6MTYyMTQ5NjI0MCwic2NvcGUiOiJvcGVuaWQgZW1haWwgcHJvZmlsZSBwaG9uZSIsImlzcyI6Imh0dHBzOi8vcmFpbHMtZGVtby5hdXRoaW5nLmNuL29pZGMiLCJhdWQiOiI2MDgwMGI5MTUxZDA0MGFmOTAxNmQ2MGIifQ.qxPlpewKtxeTDZ13Z0FUFpfJ8JrX3CKXnYj9gTaOt9IZmzxpkJp4GyVbfdz6YVvhcgPb5Hr76w6Cq-PMWAQ-_ajy9CQUFUvvuQVvDMmoW0HqwYTdpQKg8vAeU8NSfivdMuJqyDt5dytGTU0OxmN6Q1BHXx3wS0DlVVqyB1PDTYJjXW2LDzMRiLWS8QDXWMiEZ3cMSZzzAyDh98adi_Vd0g5hLbKOlICi9aQ-5Q9ze0GNO-p50eoy9cQzS0EuYNJ7PqGoGgfkUgxKwbKlbYYqCVbGs1Gc_D-85WA49uXfq4KEM3aJiwpvcMhHLq3vY_TU3ENoobYUTtd-N3GfnQGZdw",
+      "expires_in":1209600,
+      "id_token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MDhiOWI1MjQxNGJkM2I3MWZhZDA0ZWYiLCJlbWFpbCI6IjFAcXEuY29tIiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJiaXJ0aGRhdGUiOm51bGwsImZhbWlseV9uYW1lIjpudWxsLCJnZW5kZXIiOiJVIiwiZ2l2ZW5fbmFtZSI6bnVsbCwibG9jYWxlIjpudWxsLCJtaWRkbGVfbmFtZSI6bnVsbCwibmFtZSI6bnVsbCwibmlja25hbWUiOm51bGwsInBpY3R1cmUiOiJodHRwczovL2ZpbGVzLmF1dGhpbmcuY28vYXV0aGluZy1jb25zb2xlL2RlZmF1bHQtdXNlci1hdmF0YXIucG5nIiwicHJlZmVycmVkX3VzZXJuYW1lIjpudWxsLCJwcm9maWxlIjpudWxsLCJ1cGRhdGVkX2F0IjoiMjAyMS0wNC0zMFQwNTo1MzoyNi43ODJaIiwid2Vic2l0ZSI6bnVsbCwiem9uZWluZm8iOm51bGwsInBob25lX251bWJlciI6bnVsbCwicGhvbmVfbnVtYmVyX3ZlcmlmaWVkIjpmYWxzZSwibm9uY2UiOiJpcTl4eHZmSVVpIiwiYXRfaGFzaCI6IjRRdjJZUjVScUE2UDNjcGJ4VDV0TGciLCJhdWQiOiI2MDgwMGI5MTUxZDA0MGFmOTAxNmQ2MGIiLCJleHAiOjE2MjE0OTYyNDEsImlhdCI6MTYyMDI4NjY0MSwiaXNzIjoiaHR0cHM6Ly9yYWlscy1kZW1vLmF1dGhpbmcuY24vb2lkYyJ9.WmG8z6TaQou23Czc69sldtAHg1AubgclFrrnz0fARP8",
+      "scope":"openid email profile phone",
+      "token_type":"Bearer"
+    }
 
     # 演示拿 access_token
     access_token = res[:access_token]
@@ -70,7 +76,28 @@ class AuthingController < ApplicationController
     # 用 access token 换取用户信息
     userInfo = authenticationClient.getUserInfoByAccessToken(access_token)
     render json: userInfo
-    userInfoExample =  {"sub":"608b9b52414bd3b71fad04ef","email":"1@qq.com","email_verified":false,"birthdate":null,"family_name":null,"gender":"U","given_name":null,"locale":null,"middle_name":null,"name":null,"nickname":null,"picture":"https://files.authing.co/authing-console/default-user-avatar.png","preferred_username":null,"profile":null,"updated_at":"2021-04-30T05:53:26.782Z","website":null,"zoneinfo":null,"phone_number":null,"phone_number_verified":false}
+    # 返回例子: 
+    userInfoExample = {
+      "sub":"608b9b52414bd3b71fad04ef",
+      "email":"1@qq.com",
+      "email_verified":false,
+      "birthdate":null,
+      "family_name":null,
+      "gender":"U",
+      "given_name":null,
+      "locale":null,
+      "middle_name":null,
+      "name":null,
+      "nickname":null,
+      "picture":"https://files.authing.co/authing-console/default-user-avatar.png",
+      "preferred_username":null,
+      "profile":null,
+      "updated_at":"2021-04-30T05:53:26.782Z",
+      "website":null,
+      "zoneinfo":null,
+      "phone_number":null,
+      "phone_number_verified":false
+    }
   end
 
   # 演示验证 token, 从 token 中获取信息
