@@ -1,8 +1,15 @@
 
 - if user_signed_in?
 	= "您已成功登录"
+	- user = current_user
 	%div
-		= current_user.inspect
+		%p 
+			欢迎你: 
+			- if user.email
+				= user.email
+			- if user.phone
+				= user.phone
+		-# = current_user.inspect
 	= link_to "退出登录", user_logout_path
 - else
 	= "尚未登录"

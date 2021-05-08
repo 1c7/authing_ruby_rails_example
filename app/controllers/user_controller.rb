@@ -3,6 +3,7 @@ class UserController < ApplicationController
 	before_action :authenticate_user
 
 	# 去 Authing 拿用户信息
+	# 方式是通过 idToken 来做
 	def index
 		user = current_user()
 		id_token = user.authing_id_token
@@ -16,9 +17,6 @@ class UserController < ApplicationController
 		authenticationClient = AuthingRuby::AuthenticationClient.new(options)
 		authing_response = authenticationClient.getCurrentUser()
 		render json: authing_response
-	end
-
-	def info
 	end
 
 	# 初始化 AuthenticationClient
@@ -51,8 +49,9 @@ class UserController < ApplicationController
     authenticationClient = get_auth_client()
 		authenticationClient.logout
 
-		# 删掉 session
-		session.delete(:user_id)
+		# 清空 session
+		reset_session
+
 		# 回到首页
 		redirect_to root_path
 	end

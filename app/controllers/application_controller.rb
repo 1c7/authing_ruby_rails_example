@@ -8,16 +8,18 @@ class ApplicationController < ActionController::Base
 
 	# 返回当前用户
 	def current_user
-		return nil if user_signed_in?() == false
+		return nil if user_signed_in? == false
 		user_id = session[:user_id]
 		user = User.find(user_id)
 		return user
 	end
 
-	# 用于 before_action，如果用户没登录，返回登录页
+	# 用于 before_action，如果用户没登录，跳转到登录页
 	def authenticate_user
 		if user_signed_in? == false
-			redirect_to "/authing/method1"
+			default_app_host = "https://rails-demo.authing.cn/"
+      appHost = ENV['APP_HOST'] || default_app_host
+      redirect_to appHost
 		end
 	end
 
