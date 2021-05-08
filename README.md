@@ -62,6 +62,10 @@ rails s
 （还在写）
 
 
+## 其他
+* 如果不希望每次都初始化了再用（这样比较麻烦），可以参照 `config/initializers/authing_ruby.rb` 的写法。  
+
+
 
 <!--
 

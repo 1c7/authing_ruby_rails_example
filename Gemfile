@@ -4,8 +4,10 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.6.3'
 
 # 指向本地
-gem 'authing_ruby', :path => '/Users/remote_edit/Downloads/authing-ruby-sdk-community'
-# gem 'authing_ruby', '~> 1.0.7'
+# gem 'authing_ruby', :path => '/Users/remote_edit/Downloads/authing-ruby-sdk-community'
+
+gem 'authing_ruby', '~> 1.0.7'
+gem 'jwt'
 
 gem "haml-rails", "~> 2.0"
 gem 'dotenv-rails', groups: [:development, :test]
