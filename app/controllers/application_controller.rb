@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-	helper_method :user_signed_in?, :current_user # 这样 view 里面才可以调用这2个方法
+	helper_method :user_signed_in?, :current_user # 写了 helper_method 之后 view 里才可以调用这2个方法
 
 	# 判断是否登录了, 方法名模仿的是 devise
 	def user_signed_in?
@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
 		return user
 	end
 
-	# 用于 before_action，如果用户登录了就不做动作，如果没有就返回到登录页
+	# 用于 before_action，如果用户没登录，返回登录页
 	def authenticate_user
 		if user_signed_in? == false
 			redirect_to "/authing/method1"

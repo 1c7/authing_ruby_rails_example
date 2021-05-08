@@ -2,32 +2,34 @@ require 'authing_ruby'
 
 class AuthingController < ApplicationController
 
-  # 一些例子
+  # 首先是一些简单例子，取消注释并访问 http://localhost:3000/authing/example
   def example
     # 初始化
     # options = {
-    #   appId: "60800b9151d040af9016d60b",
-    #   appHost: "https://rails-demo.authing.cn",
-    #   userPoolId: "60800b8ee5b66b23128b4980", 
+    #   appId: ENV['AUTHING_APP_ID'],
+    #   appHost: ENV['AUTHING_APP_HOST'],
+    #   userPoolId: ENV['AUTHING_USERPOOL_ID'], 
     # }
     # authenticationClient = AuthingRuby::AuthenticationClient.new(options)
 
-    # 邮箱密码注册
+    # 邮箱+密码注册
     # email = "user#{rand(0...9999)}@qq.com"
     # password = "12345678" # 密码
     # resp = authenticationClient.registerByEmail(email, password)
     # render json: resp # 返回注册成功的用户信息
 
-    # 用户名密码注册
+    # 用户名+密码注册
     # username = "user#{rand(0...9999)}" # 用户名
     # password = "12345678" # 密码
     # resp = authenticationClient.registerByUsername(username, password)
     # render json: resp # 返回注册成功的用户信息
     
-    # 发手机验证码
+    # 发送短信验证码
     # phone = "13556136684"
     # resp = authenticationClient.sendSmsCode(phone)
     # render json: resp
+
+    render plain: '例子'
   end
 
   # 托管登录页认证
