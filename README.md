@@ -41,25 +41,29 @@ rails s
 ![图 2](doc/img/95cd63ffa6a23d2d2eea8d68fb35b20e804efcc33db787f5e8d374f45a41a124.png)  
 
 
-2. 注册：使用 `邮箱+密码` 或 `手机号+密码+验证码`，比如邮箱 `100@qq.com`, 密码 `123456789`
+2. 注册：使用 `邮箱+密码` 或 `手机号+密码+验证码`，比如邮箱 `1@qq.com`, 密码 `123456789`
 3. 注册完成后，进行登录
 4. 此时会回到 `http://localhost:3000/` 看到登录成功的消息。并且显示邮箱 或 手机号（取决于你的注册方式）
 ![图 3](doc/img/b82906efc0f84e2aa0cd2ce7e2a5f95d748977b70fa31010b5247ca19282a735.png)  
 
-### 传统方式是怎么实现的？
-1. 用户登录态是用 session 实现，session 数据在 Rails 里默认是全部存到 Cookie 里，叫 `CookieStore`, 你也可以换成 Redis 来存， 具体细节可以看 [Securing Rails Applications](https://guides.rubyonrails.org/security.html#session-storage), 以及 [Action Controller Overview#Session](https://guides.rubyonrails.org/action_controller_overview.html#session) 这个是 Rails 的东西，和  Authing 毫无关系
+## 传统方式是怎么实现的？
+1. 用户登录态是用 session 实现，在 Ruby on Rails 里 session 数据默认是全部存到 Cookie 里，这个叫 `CookieStore`, 你也可以换成 Redis 来存， 具体细节可以看 [Securing Rails Applications](https://guides.rubyonrails.org/security.html#session-storage), 以及 [Action Controller Overview#Session](https://guides.rubyonrails.org/action_controller_overview.html#session) 这个是 Rails 的东西，和  Authing 毫无关系
 2. 当用户访问 `http://localhost:3000/` 时，我们判断 `session[:user_id]` 是否存在，如果有就当做已登录，没有就是没登录
 3. 点击"登录"按钮会跳转到 Authing 的认证地址，这个地址来自于: `某用户池`->`某应用`->`基础设置`->`认证地址`
-4. 登录成功后，页面会跳转到回调地址，这个回调地址来自于: `某用户池`->`某应用`->`URL设置`->`登录回调地址`，我这里设置的是 `http://localhost:3000/authing/callback` 跳转到这个地址时会带上参数,完整 URL 例子：`http://localhost:3000/authing/callback?code=ZndQ4xxhds3kNHlaXYgOSKhBVEhEHLmN1HOX3O8IZf9&state=tL5NYtMet` 这个 `code` 参数是核心
-5. 我们拿到 code 参数后，去换取 AccessToken (`getAccessTokenByCode(code)`)
-6. 这个 Token 可以再用来换取用户信息 (`getUserInfoByAccessToken(access_token)`)
-7. 用户信息里有一个 `sub` 是用户独一无二的 ID
-8. 我们用这个 id 来新建 User 纪录即可，比如 `user = User.find_or_create_by(authing_user_id: sub)`
-9. 最后我们设置一下 session: `session[:user_id] = user.id ` 就结束了。
+4. 登录成功后，页面会跳转到回调地址，这个回调地址来自于: `某用户池`->`某应用`->`URL设置`->`登录回调地址`，我这里设置的是 `http://localhost:3000/authing/callback` 跳转到这个地址时会带上参数，完整 URL 例子：`http://localhost:3000/authing/callback?code=ZndQ4xxhds3kNHlaXYgOSKhBVEhEHLmN1HOX3O8IZf9&state=tL5NYtMet` 这个 `code` 参数是核心
+5. 拿到 code 后，用它来换取 AccessToken (`getAccessTokenByCode(code)`)
+6. AccessToken 可以用来换取用户信息 (`getUserInfoByAccessToken(access_token)`)
+7. 用户信息里有一个 `sub`，是用户独一无二的 ID, 比如 `609678b09079b7a7cea20541`
+8. 我们用这个 `用户 ID` 来查找/新建 User 纪录即可，比如 `user = User.find_or_create_by(authing_user_id: sub)`
+9. 最后设置一下 session: `session[:user_id] = user.id ` 就结束了
 
 
 ### JWT 方式
 （还在写）
+
+
+
+<!--
 
 ## 常见问题
 1. 对于一个前后端分离的项目，比如 React+Rails 或 Vue+Rails，加入 Authing 后有何不同？
@@ -77,7 +81,7 @@ rails s
 4. 更新密码怎么做？
 	* [更新密码](https://docs.authing.cn/v2/reference/sdk-for-node/authentication/AuthenticationClient.html#%E6%9B%B4%E6%96%B0%E7%94%A8%E6%88%B7%E5%AF%86%E7%A0%81)
 
-<!--
+
 4. 注册/登录页面怎么做？
 
 5. 手机号+验证码登录怎么做？
