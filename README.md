@@ -84,7 +84,7 @@ API 的话，一般后端只提供 API 接口，可以是 REST API 或 GraphQL�
 * RSASSA-PKCS1-v1_5 + SHA256
 * ECDSA + P-256 + SHA256   
 
-[资料来源](https://auth0.com/blog/json-web-token-signing-algorithms-overview/)
+[常用算法的资料来源](https://auth0.com/blog/json-web-token-signing-algorithms-overview/)     
 额外补充：Ruby 的 `jwt` gem 支持 HMAC, RSASSA and ECDSA.     
 
 
