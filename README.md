@@ -167,6 +167,25 @@ puts response
 签名 JWT 的 secret 也保存在 Authing 上，不用自己管理。  
 
 
+## 推荐用那种做法？做法1还是做法2？
+推荐做法1：自己做 JWT，   
+因为如果用做法2，直接用 Authing 返回的 ID token， 
+payload 数据里面包含了太多东西。   
+核心：
+
+```json
+  "phone_number": null,
+  "email": null,
+	"address"
+```
+
+手机号，邮件，地址。      
+这个数据暴露出来是不好的。    
+假设用户的 JWT 因为某种原因被恶意第三方拿到了，这些数据就泄露了。(因为 JWT 的 payload 是没加密的)   
+
+
+
+
 ## 其他
 * 如果不希望每次都初始化了再用（这样比较麻烦），可以参照 `config/initializers/authing_ruby.rb` 的写法。  
 
