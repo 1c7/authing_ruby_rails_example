@@ -1,14 +1,14 @@
 # Ruby on Rails + Authing 例子
-
+初次写于2021年5月  
 ## 介绍
 本项目演示在 Ruby on Rails 中如何使用 Authing 实现用户身份管理（使用 [`authing_ruby`](https://rubygems.org/gems/authing_ruby) gem）   
 也就是无需自己写注册登录（比如用 `devise` gem）
 
 ## 适合人群
-想使用 Authing 的 Rails 开发者。  
+想使用 Authing 的 Ruby on Rails 开发者。  
 
 ## 演示什么？
-演示两种登录方式：  
+两种登录方式：  
 1. 传统方式：cookie session 管理登录态
 2. API 方式：一般用 JWT
 
