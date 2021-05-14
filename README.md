@@ -168,11 +168,9 @@ puts response
 
 
 ## 推荐用那种做法？做法1还是做法2？
-推荐做法1：自己做 JWT，   
-因为如果用做法2，直接用 Authing 返回的 ID token， 
-payload 数据里面包含了太多东西。   
-核心：
-
+推荐做法1：自己做 JWT。      
+如果用做法2，直接用 Authing 返回的 ID token， 
+payload 数据里面包含了太多东西，比如：  
 ```json
   "phone_number": null,
   "email": null,
@@ -184,11 +182,9 @@ payload 数据里面包含了太多东西。
   },
 ```
 
-手机号，邮件，地址。      
-而且 name 和  nickname 的部分用户可能填写自己的真名。    
-这个数据暴露出来不好。     
+手机号，邮件，地址是很关键的数据。      
+而且 name 和 nickname 用户可能填自己的真名。       
 假设用户的 JWT 因为某种原因被恶意第三方拿到了，这些数据就泄露了。(因为 JWT 的 payload 是没加密的)   
-
 所以干脆 payload 里只放一个 `{user_id: 1}` 就行，验证签名后就可信了。     
 
 ## 其他
