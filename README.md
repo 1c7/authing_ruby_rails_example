@@ -176,15 +176,20 @@ payload 数据里面包含了太多东西。
 ```json
   "phone_number": null,
   "email": null,
-	"address"
+  "address": {
+    "country": null,
+    "postal_code": null,
+    "region": null,
+    "formatted": null
+  },
 ```
 
 手机号，邮件，地址。      
-这个数据暴露出来是不好的。    
+而且 name 和  nickname 的部分用户可能填写自己的真名。    
+这个数据暴露出来不好。     
 假设用户的 JWT 因为某种原因被恶意第三方拿到了，这些数据就泄露了。(因为 JWT 的 payload 是没加密的)   
 
-
-
+所以干脆 payload 里只放一个 `{user_id: 1}` 就行，验证签名后就可信了。     
 
 ## 其他
 * 如果不希望每次都初始化了再用（这样比较麻烦），可以参照 `config/initializers/authing_ruby.rb` 的写法。  
