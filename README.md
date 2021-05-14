@@ -59,6 +59,19 @@ rails s
 
 > Authing 支持 OIDC、OAuth 2.0、SAML2、CAS 1.0、LDAP 标准认证协议。标准协议会按照特定的方式传递用户信息，例如 OIDC 协议中，用户认证后 Authing 不会直接将用户的信息返回，而是返回一个授权码 code，再使用 code 在业务后端换取 Access token，再用 Access token 获取用户信息。成熟、正规的业务系统产品都会支持标准协议，使用标准协议对接可以一劳永逸地完成对接。标准协议的推荐度：OIDC > SAML2 > CAS 1.0 > LDAP > OAuth2.0。
 
+### 问题来了：为什么要 code 换 token 再换用户信息？   
+应用登录后的这个页面（应用新建后记得保持默认设置，不要设置回调地址，就会显示这个）   
+有给出答案。  
+
+![图 1](doc/img/03a01d8c504e3256dcfd8919ed8984ed437417ea3f00ae8eef240bf6b3972b79.png)   
+
+![图 2](doc/img/af8e0e81e3a9a5133559dfc5e89cbeb2cec87b69dd3c3c3cf353af3197e5c4ca.png)   
+
+[为什么要 code 换 token 再换用户信息？](https://docs.authing.cn/v2/concepts/oidc-common-questions.html#%E4%B8%BA%E4%BB%80%E4%B9%88-oidc-%E6%8E%88%E6%9D%83%E7%A0%81%E6%B5%81%E7%A8%8B%E8%A6%81-code-%E6%8D%A2-token-%E5%86%8D%E6%8D%A2%E7%94%A8%E6%88%B7%E4%BF%A1%E6%81%AF)
+
+![图 3](doc/img/bc631b408e8cadb4ccfd63275c0e892cddef1eb4e542d0a7e4166a6525127c8c.png)  
+
+
 
 ## API 方式
 这个部分不需要写代码演示了，把核心概念和流程讲清楚，读者就知道怎么做了。      
