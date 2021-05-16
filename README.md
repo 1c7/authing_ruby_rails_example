@@ -203,39 +203,8 @@ payload 数据里面包含了太多东西，比如：
 ## 其他
 * 如果不希望每次都初始化了再用（这样比较麻烦），可以参照 `config/initializers/authing_ruby.rb` 的写法。  
 
+## 一个现有的旧项目，如何迁入 Authing？
+（待写）
 
-<!--
-
-## 常见问题
-1. 对于一个前后端分离的项目，比如 React+Rails 或 Vue+Rails，加入 Authing 后有何不同？
-	* 没有什么不同，同样用 JWT 做身份认证。
-
-2. 对于一个传统的 Rails 项目（用 `app/views/` 而不是前后端分离，用 API  沟通）又怎么用 Authing？
-	* 自己通过 cookie+session 实现登录态
-
-3. 忘记密码怎么做？
-	* 先登出，然后在 Authing 的托管登录页面做
-	* 如果不用 Authing 提供的托管页面做，希望用自定义的界面
-	* [通过短信验证码重置密码](https://docs.authing.cn/v2/reference/sdk-for-node/authentication/AuthenticationClient.html#%E9%80%9A%E8%BF%87%E7%9F%AD%E4%BF%A1%E9%AA%8C%E8%AF%81%E7%A0%81%E9%87%8D%E7%BD%AE%E5%AF%86%E7%A0%81)
-	* [通过邮件验证码重置密码](https://docs.authing.cn/v2/reference/sdk-for-node/authentication/AuthenticationClient.html#%E9%80%9A%E8%BF%87%E9%82%AE%E4%BB%B6%E9%AA%8C%E8%AF%81%E7%A0%81%E9%87%8D%E7%BD%AE%E5%AF%86%E7%A0%81)
-
-4. 更新密码怎么做？
-	* [更新密码](https://docs.authing.cn/v2/reference/sdk-for-node/authentication/AuthenticationClient.html#%E6%9B%B4%E6%96%B0%E7%94%A8%E6%88%B7%E5%AF%86%E7%A0%81)
-
-
-4. 注册/登录页面怎么做？
-
-5. 手机号+验证码登录怎么做？
-
-6. 邮箱+验证码怎么做？
-
-7. 用户资料怎么处理？就是头像，昵称，性别，出生日期
-
-
-
-
-### JWT 相关资料    
-https://auth0.com/blog/critical-vulnerabilities-in-json-web-token-libraries/?_ga=2.44554212.1192185433.1620814630-1783678389.1619579473     
-jwt gem 的 readme 里给了一篇文章，这个我还没读完。   
-
--->
+## 如果因特殊情况需要迁出 Authing，如何迁移出去？    
+（待写） 
