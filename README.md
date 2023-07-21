@@ -58,13 +58,21 @@ docker compose up
 
 ## 传统方式是怎么实现的？
 1. 用户登录态是用 session 实现，在 Ruby on Rails 里 session 数据默认是全部存到 Cookie 里，这个叫 `CookieStore`, 你也可以换成 Redis 来存， 具体细节可以看 [Securing Rails Applications](https://guides.rubyonrails.org/security.html#session-storage), 以及 [Action Controller Overview#Session](https://guides.rubyonrails.org/action_controller_overview.html#session) 这个是 Rails 的东西，和  Authing 毫无关系
+
 2. 当用户访问 `http://localhost:3000/` 时，我们判断 `session[:user_id]` 是否存在，如果有就当做已登录，没有就是没登录
+
 3. 点击"登录"按钮会跳转到 Authing 的认证地址，这个地址来自于: `某用户池`->`某应用`->`基础设置`->`认证地址`
+
 4. 登录成功后，页面会跳转到回调地址，这个回调地址来自于: `某用户池`->`某应用`->`URL设置`->`登录回调地址`，我这里设置的是 `http://localhost:3000/authing/callback` 跳转到这个地址时会带上参数，完整 URL 例子：`http://localhost:3000/authing/callback?code=ZndQ4xxhds3kNHlaXYgOSKhBVEhEHLmN1HOX3O8IZf9&state=tL5NYtMet` 这个 `code` 参数是核心
+
 5. 拿到 code 后，用它来换取 AccessToken (`getAccessTokenByCode(code)`)
+
 6. AccessToken 可以用来换取用户信息 (`getUserInfoByAccessToken(access_token)`)
+
 7. 用户信息里有一个 `sub`，是用户独一无二的 ID, 比如 `609678b09079b7a7cea20541`
+
 8. 我们用这个 `用户 ID` 来查找/新建 User 纪录即可，比如 `user = User.find_or_create_by(authing_user_id: sub)`
+
 9. 最后设置一下 session: `session[:user_id] = user.id ` 就结束了
 
 以上这种方式来自于文档 [概念->单点登录与单点登出->标准协议认证](https://docs.authing.cn/v2/concepts/single-sign-on-and-single-sign-out.html#%E6%A0%87%E5%87%86%E5%8D%8F%E8%AE%AE%E8%AE%A4%E8%AF%81)
@@ -219,5 +227,5 @@ payload 数据里面包含了太多东西，比如：
 
 ### 2023-7-21 更新日志
 1. 添加了 Dockerfile 和 compose.yml，方便以 Docker 方式本地运行。
-2. 
+2. 更新了文档说明 (README.md)，因为 Authing 那边的菜单和操作方式有一些变化。
 
