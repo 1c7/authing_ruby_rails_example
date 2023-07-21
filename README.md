@@ -229,12 +229,15 @@ payload 数据里面包含了太多东西，比如：
 1. 添加了 Dockerfile 和 compose.yml，方便以 Docker 方式本地运行。
 2. 更新了文档说明 (README.md)，因为 Authing 那边的菜单和操作方式有一些变化。
 
-## 结论
-1. 截止到 2023-7-21 只有 2 个 gem 
-  * [`authing_ruby`](https://rubygems.org/gems/authing_ruby) gem (我写的) 
-  * [`authing`](https://rubygems.org/gems/authing) gem
-2. 应当再新建一个 `authing_rails` gem，进一步简化所有操作，节省开发者时间。
-  * Gemfile 里加了 `authing_rails` 之后，只需要写 `/config/initializers/authing.rb`，在里面配置 App ID, App Secret, App Host, Redirect URI, UserPool ID。
-  * 然后给 routes.rb 里加上几条路由。
-  * 然后给 Controller 和 View 里提供几个 helper 方法。
-  * 总而言之是比 `authing_ruby` 用起来更简单。尽可能节省时间。
+## 备注：截止到 2023-7-21 只有 2 个 gem 支持 Authing。
+  * [`authing_ruby` gem](https://rubygems.org/gems/authing_ruby) (我写的) 
+  * [`authing` gem](https://rubygems.org/gems/authing)
+
+## 待办事项 (TODO)
+1. 新建一个 `authing_rails` gem，进一步简化所有操作，节省开发者时间。
+
+### 使用流程举例：
+1. Gemfile 里加了 `authing_rails` 之后，只需要写 `/config/initializers/authing.rb`，在里面配置 App ID, App Secret, App Host, Redirect URI, UserPool ID。
+2. 然后给 routes.rb 里加上几条路由。
+3. 然后给 Controller 和 View 里提供几个 helper 方法。
+4. 总而言之是比 `authing_ruby` 用起来更简单。尽可能节省时间。
