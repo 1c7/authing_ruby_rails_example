@@ -16,9 +16,9 @@
 
 ## 运行前准备
 1. 注册一个 [Authing 账号](http://authing.cn/) 并登录。
-1. 登录 [Authing](https://console.authing.cn/console/userpool) 后新建一个"用户池"，名字随便填，比如"测试用户池" 类型可以选择 "to C"。
-2. 运行 `cp .env.example .env`，复制 `.env.example` 文件为 `.env` 这个用于提供环境变量给 Rails app，比如 Authing 所需的各项配置。
-3. 填充 `.env` 文件，比如 `app id`, `userpool id`, `app host`，因为必须要这些信息才能运行起来。
+1. 登录 [Authing](https://console.authing.cn/console/userpool) 后新建一个"用户池"，名字随便填，比如"测试用户池"，类型可以选择 "to C"。
+2. 运行命令 `cp .env.example .env`, 这条命令复制 `.env.example` 文件, 黏贴成新文件 `.env`, `.env` 文件用于提供环境变量给 Rails app，比如 Authing 所需的各项配置。
+3. 填充 `.env` 文件里面的环境变量，比如 `app id`, `userpool id`, `app host`，因为必须要这些信息才能运行起来。
 4. 设置回调地址，方法是 登录 Authing -> 选择某个用户池 -> 应用 -> URL设置 -> `登录回调 URL`, 写上 `http://localhost:3000/authing/callback` 因为这个 Rails 应用默认跑在 `3000` 端口，而 `authing/callback` 是对应 `routes.rb` 里的设置
 
 ## 如何运行
@@ -32,6 +32,8 @@ bundle install
 rails s
 ```
 访问 http://localhost:3000
+
+2023-7-21 补充：我在 (硬件) Macbook Pro 2021 年款 14 寸，(系统) macOS (Ventura) 13.4.1，`rbenv install 2.6.3` 会报错，所以懒得处理了，直接添加了 Docker 运行方式（见下文）
 
 ## 如何运行 (使用 Docker)
 ```
