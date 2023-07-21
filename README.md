@@ -1,8 +1,10 @@
 # Ruby on Rails + Authing 例子
-初次写于2021年5月  
+1. 初次写于 2021 年 5 月。
+2. 更新于 2023 年 7 月 21 号。
+
 ## 介绍
 本项目演示在 Ruby on Rails 中如何使用 Authing 实现用户身份管理（使用 [`authing_ruby`](https://rubygems.org/gems/authing_ruby) gem）   
-也就是无需自己写注册登录（比如用 `devise` gem）
+无需自己实现注册登录（不需要使用 `devise` gem）
 
 ## 适合人群
 想使用 Authing 的 Ruby on Rails 开发者。  
@@ -13,9 +15,10 @@
 2. API 方式：一般用 JWT
 
 ## 运行前准备
-1. 登录 [Authing](https://console.authing.cn/console/userpool) 后新建一个"用户池"，名字比如"测试用户池"(或其他任意名字)
-2. 运行 `cp .env.example .env`，目的是复制一下文件，复制 `.env.example` 文件为 `.env`
-3. 根据 `.env` 文件里的提示，填写用户池的各项信息，比如 `app id`, `userpool id`, `app host`，需要这些信息才能跑起来。
+1. 注册一个 [Authing 账号](http://authing.cn/) 并登录。
+1. 登录 [Authing](https://console.authing.cn/console/userpool) 后新建一个"用户池"，名字随便填，比如"测试用户池" 类型可以选择 "to C"。
+2. 运行 `cp .env.example .env`，复制 `.env.example` 文件为 `.env` 这个用于提供环境变量给 Rails app，比如 Authing 所需的各项配置。
+3. 填充 `.env` 文件，比如 `app id`, `userpool id`, `app host`，因为必须要这些信息才能运行起来。
 4. 设置回调地址，方法是 登录 Authing -> 选择某个用户池 -> 应用 -> URL设置 -> `登录回调 URL`, 写上 `http://localhost:3000/authing/callback` 因为这个 Rails 应用默认跑在 `3000` 端口，而 `authing/callback` 是对应 `routes.rb` 里的设置
 
 ## 如何运行
@@ -27,6 +30,13 @@ bundle install
 ### 运行
 ```
 rails s
+```
+访问 http://localhost:3000
+
+## 如何运行 (使用 Docker)
+```
+docker compose build
+docker compose up
 ```
 访问 http://localhost:3000
 
@@ -203,8 +213,9 @@ payload 数据里面包含了太多东西，比如：
 ## 其他
 * 如果不希望每次都初始化了再用（这样比较麻烦），可以参照 `config/initializers/authing_ruby.rb` 的写法。  
 
-## 一个现有的旧项目，如何迁入 Authing？
-（待写）
+## 更新日志
 
-## 如果因特殊情况需要迁出 Authing，如何迁移出去？    
-（待写） 
+### 2023-7-21 更新日志
+1. 添加了 Dockerfile 和 compose.yml，方便以 Docker 方式本地运行。
+2. 
+

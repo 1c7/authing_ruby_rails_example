@@ -17,8 +17,7 @@ class ApplicationController < ActionController::Base
 	# 用于 before_action，如果用户没登录，跳转到登录页
 	def authenticate_user
 		if user_signed_in? == false
-			default_app_host = "https://rails-demo.authing.cn/"
-      appHost = ENV['APP_HOST'] || default_app_host
+      appHost = ENV.fetch("AUTHING_APP_HOST", "https://rails-demo.authing.cn/")
       redirect_to appHost
 		end
 	end
