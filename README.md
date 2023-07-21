@@ -238,6 +238,7 @@ payload 数据里面包含了太多东西，比如：
 
 ### 使用流程举例：
 1. Gemfile 里加了 `authing_rails` 之后，只需要写 `/config/initializers/authing.rb`，在里面配置 App ID, App Secret, App Host, Redirect URI, UserPool ID。
-2. 然后给 routes.rb 里加上几条路由。
-3. 然后给 Controller 和 View 里提供几个 helper 方法。
-4. 总而言之是比 `authing_ruby` 用起来更简单。尽可能节省时间。
+2. 然后给 routes.rb 里加上几条路由。用途是处理 REDIRECT_URI，登录成功后的跳转。
+3. 然后给 Controller 和 View 里提供几个 helper 方法。用途是判断是否已登录。
+4. 总而言之：`authing_rails` 应当比 `authing_ruby` 用起来更简单。尽可能节省时间。
+
